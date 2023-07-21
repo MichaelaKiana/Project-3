@@ -17,13 +17,14 @@ merged_data = []
 merged_data.extend(data1)
 merged_data.extend(data2)
 
-# Write the merged data to a new file
+# Write the merged data to a new file, merged into one list
 with open('king-bachman.json', 'w') as outfile:
     json.dump(merged_data, outfile)
 
-files=['richard-bachman.json','stephen-king.json']
-
-with open('merged_file_name.json', "w") as outfile:
-   outfile.write('{}'.format('\n'.join([open(f, "r", encoding= "utf8").read() for f in files])))
+# files=['richard-bachman.json','stephen-king.json']
+# 
+# # Two lists in one file
+# with open('merged_file_name.json', "w") as outfile:
+#    outfile.write('{}'.format('\n'.join([open(f, "r", encoding= "utf8").read() for f in files])))
 
 
