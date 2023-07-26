@@ -21,9 +21,17 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
+@app.route('/about')
+def about():
+    return render_template('about.html')
+
 @app.route('/author')
 def author_review():
     return render_template('author.html')
+
+@app.route('/network')
+def network():
+    return render_template('network.html')
 
 @app.route('/book/<book_id>')
 def book_review(book_id):
@@ -32,6 +40,8 @@ def book_review(book_id):
 @app.teardown_appcontext
 def close_connection(exception):
     client.close()
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)

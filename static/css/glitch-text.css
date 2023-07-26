@@ -18,7 +18,7 @@ html, body {
   justify-content: center;
   align-items: center;
   background: linear-gradient(rgba(10,10,10,.6),rgba(0,0,0,.9)), repeating-linear-gradient(0, transparent, transparent 2px, black 3px, black 3px),
-    url('{{ url_for('static', filename='images/haunted-house.jpg') }}');
+    url('/static/images/haunted-house.jpg');
   background-size: cover;
   background-position: center;
   z-index: 1;
