@@ -1,10 +1,4 @@
-from flask import Flask, request, jsonify
-import numpy as np
-import sqlalchemy
-import json
-from sqlalchemy.ext.automap import automap_base
-from sqlalchemy.orm import Session
-from sqlalchemy import create_engine, func 
+from flask import Flask, render_template
 from pymongo import MongoClient
 
 #################################################
@@ -24,12 +18,8 @@ app = Flask(__name__)
 #################################################
 
 @app.route('/')
-def home():
-    return (
-        f"Welcome to the King-Bachman API!<br/>"
-        f"Available Routes:<br/>"
-        f"...."
-    )
+def index():
+    return render_template('index.html')
 
 @app.route('/author')
 def author_review():
@@ -37,7 +27,7 @@ def author_review():
 
 @app.route('/book/<book_id>')
 def book_review(book_id):
-
+    return "Book Review Page - Work in Progress"
 
 @app.teardown_appcontext
 def close_connection(exception):
