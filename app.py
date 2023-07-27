@@ -63,62 +63,13 @@ def get_authors_and_books():
 
 
 
-def prepare_data_for_cytoscape(authors_data):
-    nodes = []
-    edges = []
-    for author, books in authors_data.items():
-        # Create the central node for each author
-        nodes.append({'data': {'id': author, 'label': author, 'type': 'author'}})
-
-        for book in books:
-            book_id = book['id']
-            book_title = book['title']
-            book_image = None  # Default value for the image URL
-
-            # Check if 'volumeInfo' key exists before accessing 'imageLinks'
-            if 'volumeInfo' in book:
-                volume_info = book['volumeInfo']
-                # Check if 'imageLinks' key exists before accessing 'smallThumbnail'
-                if 'imageLinks' in volume_info and 'smallThumbnail' in volume_info['imageLinks']:
-                    book_image = volume_info['imageLinks']['smallThumbnail']
-
-            # Calculate aspect ratio (width / height)
-            aspect_ratio = book.get('aspectRatio', 1.0)
-
-            image_width = 100  # Set a default width for the node
-            image_height = image_width / aspect_ratio  # Calculate height based on aspect ratio
-
-            nodes.append({
-                'data': {
-                    'id': book_id,
-                    'label': book_title,
-                    'image': book_image,
-                    'type': 'book',
-                    'width': image_width,
-                    'height': image_height
-                }
-            })
-            edges.append({'data': {'source': author, 'target': book_id}})
-
-    return nodes, edges
-
-
 
 
 @app.route('/network')
-def network():
-    # Step 1: Get authors and books data from MongoDB
-    authors_data = get_authors_and_books()
-
-    # Step 2: Prepare data for Cytoscape.js
-    nodes, edges = prepare_data_for_cytoscape(authors_data)
-
-    # Debugging: Print the data to the console
-    print("Nodes:", nodes)
-    print("Edges:", edges)
-
-    return render_template('network.html', nodes=nodes, edges=edges)
-
+def network_page():
+    with open('static/data/mongo-king-bachman-cleaned2.json', encoding='utf-8') as json_file:
+        data = json.load(json_file)
+    return render_template('network.html', data=data)
 
 
 
