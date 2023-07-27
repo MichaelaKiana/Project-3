@@ -1,6 +1,6 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, jsonify
 from pymongo import MongoClient
-
+import json
 #################################################
 # Database Setup
 #################################################
@@ -33,7 +33,11 @@ def about():
 def author_review():
     return render_template('author.html')
 
-
+@app.route('/api/v1.0/authors')
+def get_authors_data():
+    with open('static/data/charts/author_dates.json', 'r') as f:
+        data = json.load(f)
+    return jsonify(data)
 
 def get_authors_and_books():
     authors = {}  # Dictionary to store authors and their books
