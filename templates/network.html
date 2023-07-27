@@ -3,6 +3,61 @@
 {% block title %}Network Analysis{% endblock %}
 
 {% block content %}
+
+<style>
+    #cy {
+        height: 500px;
+        width: 100%;
+        display: block;
+    }
+</style>
+
+<h1>Network Analysis</h1>
+<div id="cy"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.20.0/cytoscape.min.js"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var cy = cytoscape({
+            container: document.getElementById('cy'),
+            elements: {
+                nodes: {{ nodes | tojson }},
+                edges: {{ edges | tojson }}
+            },
+            style: [
+                {
+                    selector: 'node',
+                    style: {
+                        'background-image': 'data(image)', // Use the 'image' data attribute for background image
+                        'background-fit': 'cover', // Adjust the image size to fit the node
+                        'label': 'data(label)',
+                        'text-valign': 'center',
+                        'text-halign': 'center',
+                        'background-color': 'lightgray',
+                        // 'width': 'label',
+                        // 'height': 'label', 
+                        'min-width': '50px', // Set a minimum width for nodes
+                        'min-height': '50px', // Set a minimum height for nodes
+                        'shape': 'roundrectangle'
+                    }
+                },
+                {
+                    selector: 'edge',
+                    style: {
+                        'width': 3,
+                        'line-color': 'gray'
+                    }
+                }
+            ],
+            layout: {
+                name: 'circle'
+            }
+        });
+    });
+</script>
+
+
     <h1>This is the network page!</h1>
 
     <!-- JavaScript links -->
