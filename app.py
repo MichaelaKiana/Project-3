@@ -121,30 +121,14 @@ def network():
 
 
 
-@app.route('/book-search', methods=['POST'])
-def book_search():
-    query = request.form.get('search_query')
-    if query:
-        # Use the MongoDB text index to perform the book search
-        search_results = collection.find(
-            {'$text': {'$search': query}},
-            {'score': {'$meta': 'textScore'}}
-        ).sort([('score', {'$meta': 'textScore'})])
 
-        return render_template('book-search.html', search_results=search_results)
+@app.route('/book-review')
+def book_review():
+    return render_template('book-review.html')
 
-    return render_template('book-search.html')
 
-@app.route('/book/<book_id>')
-def book_review(book_id):
-    # Find the book by its _id field in MongoDB
-    book_data = collection.find_one({'_id': ObjectId(book_id)})
 
-    if book_data:
-        # Pass the book data to the template
-        return render_template('book-review.html', book=book_data)
-    else:
-        return jsonify({'message': 'Book not found'}), 404
+
 
 @app.teardown_appcontext
 def close_connection(exception):
