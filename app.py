@@ -39,6 +39,12 @@ def get_authors_data():
         data = json.load(f)
     return jsonify(data)
 
+@app.route('/api/v1.0/published')
+def get_published_data():
+    with open('static/data/charts/publish_dates.json', 'r') as f:
+        data = json.load(f)
+    return jsonify(data)
+
 def get_authors_and_books():
     authors = {}  # Dictionary to store authors and their books
     for book in collection.find():
