@@ -1,3 +1,13 @@
+body {
+    background-image: url("/static/images/dark-black-texture.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    min-height: 100vh;
+    color: #eef0f6;
+  } 
+
+
 /* Font styles
 
 .h1
@@ -54,14 +64,4 @@
 
 
 
-
-/* Background style */
-
-body {
-    background-image: url("/static/images/dark-black-texture.jpg");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    min-height: 100vh;
-    color: #eef0f6;
-  }  
+ 
