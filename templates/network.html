@@ -5,7 +5,21 @@
 {% block content %}
     <!-- body -->
 
-    <h1>Hi, this is a page!</h1>
+    <h1>Network Analysis</h1>
+    <p style="color: blue">Authors</p>
+    <p style="color: green">Books</p>
+
+      <!-- Add the buttons for zoom in and zoom out
+  <div class="controls">
+    <button onclick="zoomIn()">Zoom In</button>
+    <button onclick="zoomOut()">Zoom Out</button>
+  </div> -->
+
+  <!-- Append the SVG container to display the graph -->
+  <!-- <svg id="graph" width="100%" height="100%"></svg> -->
+
+  <div id="cy"></div>
+
     <script>
         var data = {{ data | tojson }};
     </script>

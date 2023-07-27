@@ -1,7 +1,7 @@
 // network.js
 
 // Create the concentric layout using D3.js
-const width = 800;
+const width = 1200;
 const height = 600;
 const radius = 200;
 
@@ -112,6 +112,9 @@ fetch("/static/data/mongo-king-bachman-cleaned2.json")
           .attr("cx", d => d.x)
           .attr("cy", d => d.y);
       });
+      
+    // Enable panning
+    cy.panningEnabled(true);
   })
   .catch(error => {
     console.error("Error loading data:", error);
