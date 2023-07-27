@@ -8,6 +8,31 @@ body {
   } 
 
 
+  a:link {
+    color: #e4f2f5;
+    background-color: transparent;
+    text-decoration: none;
+  }
+  
+  a:visited {
+    color: #e4f2f5;
+    background-color: transparent;
+    text-decoration: none;
+  }
+  
+  a:hover {
+    color: #ac1e32;
+    background-color: transparent;
+    text-decoration: underline;
+  }
+  
+  a:active {
+    color: #ac1e32;
+    background-color: transparent;
+    text-decoration: underline;
+  }
+
+
 /* Font styles
 
 .h1
