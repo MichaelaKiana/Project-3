@@ -1,5 +1,5 @@
 d3.json('http://127.0.0.1:5000/api/v1.0/authors').then(function (data) {
-    let title = 'Books by the same weird d00d'
+    let title = 'Books Published by Stephen King with pseudonym and co authors'
     let books = []
     let timesRead = []
     
@@ -7,7 +7,7 @@ d3.json('http://127.0.0.1:5000/api/v1.0/authors').then(function (data) {
         books.push(property)
         timesRead.push(data[property].length)
     }
-    
+
     let trace1 = {
         x: books,
         y: timesRead,
