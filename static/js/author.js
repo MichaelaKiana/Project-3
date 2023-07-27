@@ -25,7 +25,7 @@ d3.json('http://127.0.0.1:5000/api/v1.0/authors').then(function (data) {
 
 
 d3.json('http://127.0.0.1:5000/api/v1.0/published').then(function (data) {
-    let title = 'Books Published by Stephen King with pseudonym and co authors'
+    let title = 'Books Published by Stephen King throughout the years'
     years = []
     counts = []
     for(const property in data){
